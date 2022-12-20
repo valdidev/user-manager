@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useStateContext } from "../contexts/ContextProvider";
 
-const DefaultLayout = (props) => {
+const DefaultLayout = () => {
 
     const { user, token } = useStateContext();
 
