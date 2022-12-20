@@ -1,8 +1,12 @@
-const DefaultLayout = props => {
+import { Outlet } from "react-router-dom";
+
+const DefaultLayout = (props) => {
     return (
-      <div>DefaultLayout</div>
-    )
-  }
-  
-  
-  export default DefaultLayout
+        <div>
+            default
+            <Outlet />
+        </div>
+    );
+};
+
+export default DefaultLayout;
