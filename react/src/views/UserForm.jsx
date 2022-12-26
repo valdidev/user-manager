@@ -43,7 +43,8 @@ export default function UserForm() {
                 })
                 .catch((err) => {
                     const response = err.response;
-                    if (response && response.status === 422) {
+                    console.log(response.status);
+                    if (response.status === 401) {
                         setErrors(response.data.errors);
                     }
                 });
@@ -55,7 +56,8 @@ export default function UserForm() {
                 })
                 .catch((err) => {
                     const response = err.response;
-                    if (response && response.status === 422) {
+                    console.log(response.status);
+                    if (response.status === 401 || response.status === 422) {
                         setErrors(response.data.errors);
                     }
                 });
@@ -85,6 +87,7 @@ export default function UserForm() {
                             placeholder="Name"
                         />
                         <input
+                            type="email"
                             value={user.email}
                             onChange={(e) =>
                                 setUser({ ...user, email: e.target.value })

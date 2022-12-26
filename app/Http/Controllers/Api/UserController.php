@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\UserResource;
+use PhpParser\Node\Stmt\TryCatch;
 
 class UserController extends Controller
 {
@@ -30,6 +31,7 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
+
         $data = $request->validated();
         $data['password'] = bcrypt($data['password']);
         $user = User::create($data);
