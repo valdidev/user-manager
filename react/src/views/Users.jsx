@@ -26,7 +26,7 @@ export default function Users() {
 
     const onDelete = (user) => {
         console.log(user.id);
-        
+
         if (!window.confirm("Are you sure you want to delete user?")) {
             return;
         }
@@ -61,31 +61,42 @@ export default function Users() {
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {users.map((user) => (
-                            <tr key={user.id}>
-                                <td>{user.id}</td>
-                                <td>{user.name}</td>
-                                <td>{user.email}</td>
-                                <td>{user.created_at}</td>
-                                <td>
-                                    <Link
-                                        className="btn-edit"
-                                        to={`/users/${user.id}`}
-                                    >
-                                        Edit
-                                    </Link>
-                                    &nbsp;
-                                    <button
-                                        onClick={(ev) => onDelete(user)}
-                                        className="btn-delete"
-                                    >
-                                        Delete
-                                    </button>
+                    {loading && (
+                        <tbody>
+                            <tr>
+                                <td colSpan="5" className="text-center">
+                                    Loading ...
                                 </td>
                             </tr>
-                        ))}
-                    </tbody>
+                        </tbody>
+                    )}
+                    {!loading && (
+                        <tbody>
+                            {users.map((user) => (
+                                <tr key={user.id}>
+                                    <td>{user.id}</td>
+                                    <td>{user.name}</td>
+                                    <td>{user.email}</td>
+                                    <td>{user.created_at}</td>
+                                    <td>
+                                        <Link
+                                            className="btn-edit"
+                                            to={`/users/${user.id}`}
+                                        >
+                                            Edit
+                                        </Link>
+                                        &nbsp;
+                                        <button
+                                            onClick={(ev) => onDelete(user)}
+                                            className="btn-delete"
+                                        >
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    )}
                 </table>
             </div>
         </div>
