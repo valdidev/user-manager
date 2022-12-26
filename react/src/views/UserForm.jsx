@@ -1,7 +1,13 @@
+import { useState } from "react";
+
 export default function UserForm() {
-    return (
-        <div>
-            user form
-        </div>
-    );
+    const {} = useParams();
+
+    const [user, setUser] = useState();
+
+    if (id) {
+
+    }
+
+    return <div>user form</div>;
 }
