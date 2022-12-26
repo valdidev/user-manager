@@ -31,6 +31,10 @@ export default function UserForm() {
         }, []);
     }
 
+    const onSubmit = (e) => {
+        e.preventDefault();
+    };
+
     return (
         <>
             {user.id && <h1>Update User: {user.name}</h1>}
@@ -43,6 +47,39 @@ export default function UserForm() {
                             <p key={key}>{errors[key][0]}</p>
                         ))}
                     </div>
+                )}
+                {!loading && (
+                    <form onSubmit={onSubmit}>
+                        <input
+                            value={user.name}
+                            onChange={(e) =>
+                                setUser({ ...user, name: e.target.value })
+                            }
+                            placeholder="Name"
+                        />
+                        <input
+                            value={user.email}
+                            onChange={(e) =>
+                                setUser({ ...user, email: e.target.value })
+                            }
+                            placeholder="Email"
+                        />
+                        <input
+                            onChange={(e) =>
+                                setUser({ ...user, password: e.target.value })
+                            }
+                            placeholder="Password"
+                        />
+                        <input
+                            onChange={(e) =>
+                                setUser({
+                                    ...user,
+                                    password_confirmation: e.target.value,
+                                })
+                            }
+                            placeholder="Password Confirmation"
+                        />
+                    </form>
                 )}
             </div>
         </>
