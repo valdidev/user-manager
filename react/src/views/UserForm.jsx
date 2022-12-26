@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axiosClient from "../axios-client";
 
 export default function UserForm() {
     const { id } = useParams();
+    const navigate = useNavigate();
 
     const [errors, setErrors] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -33,6 +34,32 @@ export default function UserForm() {
 
     const onSubmit = (e) => {
         e.preventDefault();
+
+        if (user.id) {
+            axiosClient
+                .put(`/users/${user.id}`)
+                .then(() => {
+                    navigate("/users");
+                })
+                .catch((err) => {
+                    const response = err.response;
+                    if (response && response.status === 422) {
+                        setErrors(response.data.errors);
+                    }
+                });
+        } else {
+            axiosClient
+                .post("/users", user)
+                .then(() => {
+                    navigate("/users");
+                })
+                .catch((err) => {
+                    const response = err.response;
+                    if (response && response.status === 422) {
+                        setErrors(response.data.errors);
+                    }
+                });
+        }
     };
 
     return (
@@ -65,12 +92,14 @@ export default function UserForm() {
                             placeholder="Email"
                         />
                         <input
+                            type="password"
                             onChange={(e) =>
                                 setUser({ ...user, password: e.target.value })
                             }
                             placeholder="Password"
                         />
                         <input
+                            type="password"
                             onChange={(e) =>
                                 setUser({
                                     ...user,
