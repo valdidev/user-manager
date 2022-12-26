@@ -79,6 +79,7 @@ export default function UserForm() {
                             }
                             placeholder="Password Confirmation"
                         />
+                        <button className="btn">Save</button>
                     </form>
                 )}
             </div>
