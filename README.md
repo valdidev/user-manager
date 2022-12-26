@@ -1,5 +1,10 @@
 # USER MANAGER APP - React, Laravel & MySQL
 
+## CRUD of users in an API made in Laravel, consumed by a front end in react.
+
+_In this application I have used the react hooks:
+useState, useEffect, useRef and the Context API_
+
 ![image](https://user-images.githubusercontent.com/96445737/209580186-fc62096d-8f21-4bdf-8e21-5a6f4298ebc7.png)
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
