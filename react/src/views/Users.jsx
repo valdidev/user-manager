@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axiosClient from "../axios-client";
+import { Link } from 'react-router-dom';
 
 export default function Users() {
     const [users, setUsers] = useState([]);
@@ -17,11 +18,18 @@ export default function Users() {
             .then(({ data }) => {
                 setLoading(false);
                 console.log(data);
-            })
+            }) 
             .catch(() => {
                 setLoading(false);
             });
     };
 
-    return <div>Users</div>;
+    return (
+        <div>
+            <div>
+                <h1>Users</h1>
+                <Link>Add new</Link>
+            </div>
+        </div>
+    );
 }
